@@ -1,0 +1,10 @@
+
+#### 3.2 **`.gitignore`**
+Add files/folders you want to exclude from Git (e.g., compiled files, environments):
+
+```gitignore
+__pycache__/
+*.pyc
+.env
+node_modules/
+*.db
