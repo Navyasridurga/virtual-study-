@@ -1,0 +1,41 @@
+import sqlite3
+
+# Connect to the existing SQLite database
+conn = sqlite3.connect('database/app.db')
+cursor = conn.cursor()
+
+# Insert a sample user
+cursor.execute('''
+    INSERT INTO users (username, preferences, progress) 
+    VALUES ('JohnDoe', '{"theme": "light", "study_hours": 2}', '{"completed_goals": 5}')
+''')
+
+# Insert sample study material
+cursor.execute('''
+    INSERT INTO study_materials (title, content, type) 
+    VALUES ('Math Chapter 1', 'Content of Chapter 1', 'Textbook')
+''')
+
+# Insert a sample goal
+cursor.execute('''
+    INSERT INTO goals (user_id, goal_description, status) 
+    VALUES (1, 'Complete Chapter 1', 'In Progress')
+''')
+
+# Insert a sample interaction
+cursor.execute('''
+    INSERT INTO interactions (user_id, question, answer) 
+    VALUES (1, 'What is 2+2?', '4')
+''')
+
+# Insert a sample quiz
+cursor.execute('''
+    INSERT INTO quizzes (question, answer, options) 
+    VALUES ('What is the capital of France?', 'Paris', '["Paris", "London", "Berlin", "Madrid"]')
+''')
+
+# Commit the changes and close the connection
+conn.commit()
+conn.close()
+
+print("Sample data added successfully!")
